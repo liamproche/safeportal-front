@@ -1,14 +1,15 @@
-import {createContext, useState, useEffect} from 'react';
+import { createContext, useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 
 const AuthContext = createContext()
+
+export default AuthContext
 
 export const AuthProvider=({children})=>{    
     const [user, setUser] = useState(()=>localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     const [incorrectCredentials, setIncorrectCredentials] = useState(false)
     //THIS LINE OF CODE WAS A NIGHTMARE!!!
     const [authTokens, setAuthTokens]=useState(()=>localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
-    const [loading, setLoading]=useState(true)
     //BEGIN USER LOGIN
     const loginUser= async(e)=>{
         e.preventDefault()
@@ -85,7 +86,7 @@ export const AuthProvider=({children})=>{
             }
         }, fourMinutes)
         return()=>clearInterval(interval)
-      },[authTokens, loading])
+      },[authTokens])
     
     //THIS VARIABLE PASSES THE INFORMATION TO BE STORED IN CONTEXT (VARIABLES ON TOP/FUNCTIONS ON THE BOTTOM)
     const contextData={
