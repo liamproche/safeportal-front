@@ -87,7 +87,7 @@ export const AuthProvider=({children})=>{
         return()=>clearInterval(interval)
       },[authTokens, loading])
     
-    //THIS VARIABLE PASSES THE INFORMATION STORED IN CONTEXT (VARIABLES ON TOP/FUNCTIONS ON THE BOTTOM)
+    //THIS VARIABLE PASSES THE INFORMATION TO BE STORED IN CONTEXT (VARIABLES ON TOP/FUNCTIONS ON THE BOTTOM)
     const contextData={
         incorrectCredentials: incorrectCredentials,
         user: user,

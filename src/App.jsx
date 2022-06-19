@@ -3,6 +3,7 @@ import Nav from './Nav/Nav'
 import About from './About/About'
 import Login from './Login/Login'
 import Register from './Register/Register'
+import { useState, useEffect, useContext } from 'react'
 
 function App() {
   return (
