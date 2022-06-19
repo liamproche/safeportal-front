@@ -1,10 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import Nav from './Nav/Nav'
+import About from './About/About'
+import Login from './Login/Login'
+import Register from './Register/Register'
 
 function App() {
   return (
     <div className="App">
-      <h1>Safe Portal</h1>
+      <h1>App name goes here</h1>
+      <Nav/>
+      <About/>
+      <Login/>
+      <Register/>
     </div>
   );
 }
