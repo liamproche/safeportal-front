@@ -8,9 +8,9 @@ function Nav() {
     const [navigate, setNavigate] = useState(false)
     return (
         <nav className="Nav">
-            <h2>This is the nav component</h2>
             {!user?
                 <>
+                    <Link to="/">Home</Link>
                     <Link to="/login">Login</Link>
                     <Link to="/register">Create Account</Link>
                 </>

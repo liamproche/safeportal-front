@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Router>
         <AuthProvider>
-          <h1>App name goes here</h1>
+          <h1>Safeportal</h1>
           <Nav/>
           <Routes>
             <Route path="/" element={<About/>} exact/>

@@ -16,7 +16,7 @@ export const AuthProvider=({children})=>{
         try{
             //NOTE-CHANGE ONCE AUTH ROUTES ARE KNOWN
             //CHANGE FOR DB DEPLOYMENT
-            const response = await fetch('http://localhost:3001/auth?/login?/', {
+            const response = await fetch('http://localhost:3001/user/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -53,9 +53,8 @@ export const AuthProvider=({children})=>{
       //BEGIN REFRESH TOKEN CALLS
       const updateToken= async () =>{
         try{
-            //NOTE- CHANGE ONCE AUTH ROUTES ARE KNOWN
             //CHANGE FOR DB DEPLOYMENT
-            const response = await fetch('http://localhost:3001/auth?/refresh?/', {
+            const response = await fetch('http://localhost:3001/user/refresh/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
