@@ -16,7 +16,6 @@ function Register() {
         try{
           const response = await fetch('http://localhost:3001/user')
           const parsedResponse = await response.json()
-          console.log(parsedResponse)
           parsedResponse.map((user)=>{
             return usernames.push(user.username)
           })
