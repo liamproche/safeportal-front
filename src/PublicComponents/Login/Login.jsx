@@ -1,4 +1,4 @@
-import AuthContext from '../context/AuthContext';
+import AuthContext from '../../context/AuthContext'
 import { useState, useContext } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
