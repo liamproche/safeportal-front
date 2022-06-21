@@ -4,7 +4,7 @@ import { Link, Navigate } from 'react-router-dom'
 import './Nav.css'
 
 function Nav() {
-    let { user, logoutUser} = useContext(AuthContext)
+    let { user, logoutUser } = useContext(AuthContext)
     const [navigate, setNavigate] = useState(false)
     return (
         <nav className="Nav">
@@ -18,10 +18,10 @@ function Nav() {
                 // NOTE - LOGGED IN USER ROUTES GO HERE
                 <>
                     <a href="" onClick={()=>{logoutUser(); setNavigate(true)}}>Logout</a>
+                    <Link to="/account">Account Settings</Link>
+                    {navigate?<Navigate to="/"/>: <br className="nothing"/>}
                 </>
             }
-
-
         </nav>
     )
 }
