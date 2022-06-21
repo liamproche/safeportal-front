@@ -14,7 +14,6 @@ export const AuthProvider=({children})=>{
     const loginUser= async(e)=>{
         e.preventDefault()
         try{
-            //NOTE-CHANGE ONCE AUTH ROUTES ARE KNOWN
             //CHANGE FOR DB DEPLOYMENT
             const response = await fetch('http://localhost:3001/user/login/', {
                 method: 'POST',
@@ -28,7 +27,8 @@ export const AuthProvider=({children})=>{
         })
         const data = await response.json()
         if(response.status === 200){
-          setAuthTokens(data)
+          console.log(data.token)
+          setAuthTokens(data.token)
           setUser(jwt_decode(data.access))
           localStorage.setItem('authTokens', JSON.stringify(data))
           setIncorrectCredentials(false)

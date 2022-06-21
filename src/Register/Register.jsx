@@ -14,8 +14,9 @@ function Register() {
     const navigate = useNavigate() 
     const getUsernames = async () =>{
         try{
-          const response = await fetch('http://localhost:3000/user')
+          const response = await fetch('http://localhost:3001/user')
           const parsedResponse = await response.json()
+          console.log(parsedResponse)
           parsedResponse.map((user)=>{
             return usernames.push(user.username)
           })
@@ -52,7 +53,7 @@ function Register() {
           password: password,
         }
         try{
-          const response = await fetch('http://localhost:3000/user', {
+          const response = await fetch('http://localhost:3001/user', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -72,11 +73,11 @@ function Register() {
           alert("Please try you request again")
         }
       }
-    //   useEffect(() => {
-    //     if(localStorage.getItem('token') !== null) {
-    //     }
-    //     getUsernames();
-    //   });
+      useEffect(() => {
+        if(localStorage.getItem('token') !== null) {
+        }
+        getUsernames();
+      }, []);
     return (
         <div className="Register">
             <div id="register-form-container">
