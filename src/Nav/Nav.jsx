@@ -17,7 +17,8 @@ function Nav() {
                 :
                 // NOTE - LOGGED IN USER ROUTES GO HERE
                 <>
-                    <a href="" onClick={()=>{logoutUser(); setNavigate(true)}}>Logout</a>
+                    <Link to="/">Home</Link>
+                    <p className="link" onClick={()=>{logoutUser(); setNavigate(true)}}>Logout</p>
                     <Link to="/account">Account Settings</Link>
                     {navigate?<Navigate to="/"/>: <br className="nothing"/>}
                 </>
