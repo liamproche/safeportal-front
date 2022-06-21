@@ -1,13 +1,15 @@
 import { useContext } from 'react';
 import AuthContext from '../context/AuthContext'
+import { Link, Navigate } from 'react-router-dom'
 import './Nav.css'
 
 function Nav() {
     return (
-        <div className="Nav">
-            <p>Sign Up Link</p>
-            <p>Login Link</p>
-        </div>
+        <nav className="Nav">
+            <h2>This is the nav component</h2>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Create Account</Link>
+        </nav>
     )
 }
 
