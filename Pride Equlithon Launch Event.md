@@ -60,13 +60,12 @@ DATA MODELS SO FAR
 	-USER
 		-username (must be unique)
 		-email
-		-password (what requirements?)
+		-password (no validation???)
 		-birthday (age)??
-		-how the user identifies (this should be a varChar?... what requirements?)
+		-how the user identifies <-- Pronouns the user uses (providing this should be optional)
 		-profile pic/avatar?
 		-location (how many fields is this? home country? current location? city/state/country?)
-		-timestamp? <--Maybe not. Why would we need it?
-		-Shelter/Clan??
+		-Shelter/Clan?? <--maybe voluntary?
 
 	-POST
 		-title?
@@ -100,7 +99,7 @@ USER STORIES
 	-Posts that are marked as an emergency should be displayed in red.
 
 MVP
-
+--
 
 MATT'S AVAILIBILITY
 	-Matt super open to communication
@@ -109,6 +108,54 @@ MATT'S AVAILIBILITY
 
 QUESTIONS FOR MATT
 	-Profile pic question
+	-Should we collect birthdate?
+		-This could be helpful to help people connect with others, but is a security concern if people don't want to be found
+		-Optional field for age/birthdate?
+		-Optional -> What are user pronouns?
+		-User should be able to choose if they have a location or not
 
+
+THOUGHTS ON CLANS
+	-Should be user generated
+
+
+
+QUESTIONS FOR THE GROUP
+	-Nav when first accessing the site
+		-This should be responsive
+		-Login
+		-Sign-up
+		-Anything else?
+	-Nav after login???
+		-What goes here???
+		-Create post?
+		-Serch users?
+		-Edit account
+	-Routing for homepage/login/
+		-Is the login form visible on the landing page or is this a seperate route?
+	-What information are we collecting on the users?
+	-User story breakdown
+
+
+MVP REQUIREMENTS
+		-What is the app?
+			-What services does it provide?
+			-What features do we want to include?
+		-Are we going to deploy?
+
+
+-WHAT DEVS NEED TO GET STARTED
+		-Wireframes for landing page, register page, login page
+		-MVP Requirements
+		-React router --> Seperate login page, create account page, etc.
+
+
+NOTES FROM MEETING 6/20
+	-How does safeplace approve new members?
+	-Incorporate App link into nav in its own tab
+	
+
+	USER
+		-Country of origin
 
 

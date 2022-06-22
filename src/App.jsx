@@ -1,21 +1,28 @@
 import './App.css';
-import Nav from './Nav/Nav'
-import About from './About/About'
-import Login from './Login/Login'
-import Register from './Register/Register'
+import Nav from './PublicComponents/Nav/Nav'
+import About from './PublicComponents/About/About'
+import Login from './PublicComponents/Login/Login'
+import Register from './PublicComponents/Register/Register'
+import EditAccount from './PrivateComponents/EditAccount/EditAccount';
 import { AuthProvider } from './context/AuthContext'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 function App() {
   return (
     <div className="App">
-      <AuthProvider>
-        <h1>App name goes here</h1>
-        <Nav/>
-        <About/>
-        <Login/>
-        <Register/>
+      <Router>
+        <AuthProvider>
+          <h1>Safeportal</h1>
+          <Nav/>
+          <Routes>
+            <Route path="/" element={<About/>} exact/>
+            <Route path="/login" element={<Login/>} exact/>
+            <Route path="/register" element={<Register/>} exact/>
+            <Route path="/account" element={<EditAccount/>} exact/>
+        </Routes>
       </AuthProvider>
+      </Router>
     </div>
   );
 }

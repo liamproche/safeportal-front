@@ -14,9 +14,8 @@ export const AuthProvider=({children})=>{
     const loginUser= async(e)=>{
         e.preventDefault()
         try{
-            //NOTE-CHANGE ONCE AUTH ROUTES ARE KNOWN
             //CHANGE FOR DB DEPLOYMENT
-            const response = await fetch('http://localhost:3001/auth?/login?/', {
+            const response = await fetch('http://localhost:3001/user/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -28,9 +27,9 @@ export const AuthProvider=({children})=>{
         })
         const data = await response.json()
         if(response.status === 200){
-          setAuthTokens(data)
-          setUser(jwt_decode(data.access))
-          localStorage.setItem('authTokens', JSON.stringify(data))
+          setAuthTokens({acces:data.token, refresh: data.refreshToken})
+          setUser(jwt_decode(data.token))
+          localStorage.setItem('authTokens', JSON.stringify({acces:data.token, refresh: data.refreshToken}))
           setIncorrectCredentials(false)
         }
         else if(response.status === 401){
@@ -52,21 +51,21 @@ export const AuthProvider=({children})=>{
       }
       //BEGIN REFRESH TOKEN CALLS
       const updateToken= async () =>{
+        console.log('updating token')
         try{
-            //NOTE- CHANGE ONCE AUTH ROUTES ARE KNOWN
             //CHANGE FOR DB DEPLOYMENT
-            const response = await fetch('http://localhost:3001/auth?/refresh?/', {
+            const response = await fetch('http://localhost:3001/user/refresh/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({'refresh':authTokens.refresh})
+            body: JSON.stringify({'refreshToken': authTokens.refresh})
           })
           const data = await response.json()
           if(response.status === 200){
-            setAuthTokens(data)
-            setUser(jwt_decode(data.access))
-            localStorage.setItem('authTokens', JSON.stringify(data))
+            setAuthTokens({acces:data.token, refresh: data.refreshToken})
+            setUser(jwt_decode(data.token))
+            localStorage.setItem('authTokens', JSON.stringify(authTokens))
           }
           else{
             logoutUser();
@@ -78,6 +77,7 @@ export const AuthProvider=({children})=>{
         }
       }
       //TO CALL REFRESH FUNCTION BEFORE 5MIN UP
+      //NOTE-CHANGE BACK TO 4MIN INTERVAL
       useEffect(()=>{
         const fourMinutes = 1000 * 60 * 4
         let interval = setInterval(()=>{
@@ -86,7 +86,7 @@ export const AuthProvider=({children})=>{
             }
         }, fourMinutes)
         return()=>clearInterval(interval)
-      },[authTokens])
+      })
     
     //THIS VARIABLE PASSES THE INFORMATION TO BE STORED IN CONTEXT (VARIABLES ON TOP/FUNCTIONS ON THE BOTTOM)
     const contextData={
