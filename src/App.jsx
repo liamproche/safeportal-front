@@ -1,9 +1,10 @@
 import './App.css';
-import Register from './PublicComponents/Register/Register'
 import EditAccount from './PrivateComponents/EditAccount/EditAccount';
+import PrivateComponents from './PrivateComponents/PrivateComponents';
+import ProfileForm from './PrivateComponents/ProfileForm/ProfileForm';
 import { AuthProvider } from './context/AuthContext'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import PrivateComponents from './PrivateComponents/PrivateComponents';
+
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
         <AuthProvider>
           <Routes>
             <Route path="/" element={<PrivateComponents/>} exact/>
-            <Route path="/register" element={<Register/>} exact/>
+            <Route path="/profile" element={<ProfileForm/>} exact/>
             <Route path="/account" element={<EditAccount/>} exact/>
         </Routes>
       </AuthProvider>

@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import AuthContext from '../../context/AuthContext';
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Nav.css'
 
 function Nav() {
@@ -8,7 +8,7 @@ function Nav() {
     const [navigate, setNavigate] = useState(false)
     return (
         <nav className="Nav">
-            <p>Profile</p>
+            <Link to="/profile">Profile</Link>
             <p>Testimonials</p>
             <p>Direct Message</p>
             <p>Groups</p>
