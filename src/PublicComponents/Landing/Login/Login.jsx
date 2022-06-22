@@ -1,4 +1,4 @@
-import AuthContext from '../../context/AuthContext'
+import AuthContext from '../../../context/AuthContext'
 import { useState, useContext } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
@@ -10,7 +10,6 @@ function Login() {
     return !user ?
         <div className="Login">
             <Form id="login-form" className="rounded p-4 p-sm-3" onSubmit={loginUser}>
-                <h2 className="form-header" key="login-header">Login</h2>
                 <Form.Group className="mb-3">
                     <Form.Label className="form-label">Username</Form.Label>
                     <Form.Control className="user-input" type="username" placeholder='Enter username' name="username"/>
