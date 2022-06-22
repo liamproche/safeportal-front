@@ -7,3 +7,8 @@ nav{
     display: flex;
     justify-content: space-around;
 }
+.logout-link{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}

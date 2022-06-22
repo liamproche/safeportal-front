@@ -13,7 +13,7 @@ function Nav() {
             <p>Direct Message</p>
             <p>Groups</p>
             <p>Report</p>
-            <p onClick={logoutUser}>Logout</p>
+            <p className="logout-link" onClick={logoutUser}>Logout</p>
         </nav>
     )
 }
