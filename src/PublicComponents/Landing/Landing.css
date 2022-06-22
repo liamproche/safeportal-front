@@ -7,7 +7,7 @@
 .about-container{
     /* border: 2px solid purple; */
     background-color: white;
-    max-width: 100%;
+    width: 80%;
 }
 .login-container{
     width: 60%;
