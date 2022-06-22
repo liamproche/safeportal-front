@@ -8,21 +8,12 @@ function Nav() {
     const [navigate, setNavigate] = useState(false)
     return (
         <nav className="Nav">
-            {!user?
-                <>
-                    <Link to="/">Home</Link>
-                    <Link to="/login">Login</Link>
-                    <Link to="/register">Create Account</Link>
-                </>
-                :
-                // NOTE - LOGGED IN USER ROUTES GO HERE
-                <>
-                    <Link to="/">Home</Link>
-                    <p className="link" onClick={()=>{logoutUser(); setNavigate(true)}}>Logout</p>
-                    <Link to="/account">Account Settings</Link>
-                    {navigate?<Navigate to="/"/>: <br className="nothing"/>}
-                </>
-            }
+            <p>Profile</p>
+            <p>Testimonials</p>
+            <p>Direct Message</p>
+            <p>Groups</p>
+            <p>Report</p>
+            <p onClick={logoutUser}>Logout</p>
         </nav>
     )
 }

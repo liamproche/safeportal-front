@@ -1,6 +1,4 @@
 import './App.css';
-import Nav from './PrivateComponents/Nav/Nav'
-import Landing from './PublicComponents/Landing/Landing';
 import Register from './PublicComponents/Register/Register'
 import EditAccount from './PrivateComponents/EditAccount/EditAccount';
 import { AuthProvider } from './context/AuthContext'
