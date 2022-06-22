@@ -1,0 +1,26 @@
+.Landing{
+    /* border: 2px solid red; */
+    height: 100vh;
+    display: flex; 
+    background-color: white;
+}
+.about-container{
+    /* border: 2px solid purple; */
+    background-color: white;
+    width: 80%;
+}
+.login-container{
+    width: 60%;
+    background-color: blue;
+    color: white;
+}
+.login-elements{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid black; */
+    margin-top: 30%;
+}
+#login-header{
+    margin-left: 15%;
+    align-self: flex-start;
+}
