@@ -1,13 +1,13 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
 import { Link } from 'react-router-dom'
 import './Nav.css'
 
 function Nav() {
-    let { user, logoutUser } = useContext(AuthContext)
-    const [navigate, setNavigate] = useState(false)
+    let { logoutUser } = useContext(AuthContext)
     return (
         <nav className="Nav">
+            <Link to="/">Home</Link>
             <Link to="/profile">Profile</Link>
             <p>Testimonials</p>
             <p>Direct Message</p>
