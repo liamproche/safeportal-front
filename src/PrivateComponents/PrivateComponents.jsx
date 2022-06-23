@@ -7,6 +7,7 @@ import Reports from "./Reports/Reports";
 import AuthContext from '../context/AuthContext';
 import Nav from "./Nav/Nav";
 
+
 function PrivateComponents() {
   let { user } = useContext(AuthContext)
   return user ?
