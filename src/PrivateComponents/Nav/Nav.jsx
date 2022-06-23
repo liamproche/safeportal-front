@@ -7,7 +7,7 @@ function Nav() {
     let { logoutUser } = useContext(AuthContext)
     return (
         <nav className="Nav">
-            <Link to="/">Home</Link>
+            <Link to="/">Community Feed</Link>
             <Link to="/profile">Profile</Link>
             <p>Testimonials</p>
             <p>Direct Message</p>
