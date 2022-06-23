@@ -7,6 +7,9 @@ import Reports from "./Reports/Reports";
 import AuthContext from '../context/AuthContext';
 import Nav from "./Nav/Nav";
 
+//I THINK THIS IS WHERE THE API CALLS HAPPEN
+
+
 function PrivateComponents() {
   let { user } = useContext(AuthContext)
   return user ?

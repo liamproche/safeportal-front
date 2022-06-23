@@ -3,8 +3,10 @@ import { useState, useContext } from "react";
 import { Modal, Form, Button } from 'react-bootstrap'
 import AuthContext from "../../context/AuthContext";
 import "./Profile.css"
+import { propTypes } from "react-bootstrap/esm/Image";
 
-function Profile() {
+function Profile(props) {
+  const [profile, setProfile] = useState(...props.profile)
   const [username, setUsername] = useState('')
   const [pronouns, setPronouns] = useState('')
   const [countryOfOrigin, setCountryOfOrigin] = useState('')
@@ -29,8 +31,14 @@ function Profile() {
     formData.append("about", aboutMe)
     formData.append("interests", interests)
     formData.append('userId', user.id)
-    const response = await fetch("http://localhost:3001/profiles")
+    const response = await fetch("http://localhost:3001/profiles",{
+      method: "PUT",
+      body: formData
+    })
+    const parsedResponse = await response.json()
     
+    //CHECK THIS IF DOESN'T WORK
+    setProfile(parsedResponse)
   }
   const handleImageUpload = (e) =>{
     let file = e.target.files[0]
