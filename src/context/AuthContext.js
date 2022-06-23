@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode';
 
 const AuthContext = createContext()
@@ -50,8 +49,8 @@ export const AuthProvider=({children})=>{
         setUser(null)
         localStorage.removeItem('authTokens')
         console.log('user logged out')
-        window.location.reload(false)
-        return <Navigate to="/"/>
+        // window.location.reload(false)
+ 
       }
       //BEGIN REFRESH TOKEN CALLS
       const updateToken= async () =>{
