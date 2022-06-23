@@ -9,9 +9,9 @@ function Nav() {
         <nav className="Nav">
             <Link to="/">Community Feed</Link>
             <Link to="/profile">Profile</Link>
+            <Link to="/groups">Groups</Link>
             <p>Testimonials</p>
             <p>Direct Message</p>
-            <p>Groups</p>
             <p>Report</p>
             <p className="logout-link" onClick={logoutUser}>Logout</p>
         </nav>
