@@ -1,6 +1,6 @@
 import AuthContext from '../../../context/AuthContext'
 import { useState, useContext } from 'react'
-import { Navigate, Link } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { Modal, Form, Button } from 'react-bootstrap'
 import './Login.css'
 
@@ -13,6 +13,7 @@ function Login() {
     const [confirmPass, setConfirmPass] = useState('')
     const [accessCode, setAccessCode] = useState('')
     const [passErr, setPassErr] = useState(null)
+    const [usernameErr, setUsernameErr] = useState(null)
     const showModal = ()=>{
         setShowCreateAccount(!showCreateAccount)
     }
@@ -43,7 +44,10 @@ function Login() {
             body: JSON.stringify(user)
           })
           const parsedResponse = await response.json()
-          if(parsedResponse.user){
+          if(parsedResponse.message === "username is taken"){
+            setUsernameErr(true)
+          }
+          else if(parsedResponse.user){
             return <Navigate to ='/'/>
           }
           else{
@@ -84,7 +88,7 @@ function Login() {
                     <Form onSubmit={checkSubmit}>
                         <Form.Group>
                             <Form.Label className="form-label">Username</Form.Label>
-                            <Form.Control className="user-input" type="text" placeholder="Select a username" name="username" required onChange={(e)=>{setUsername(e.target.value)}}/>
+                            <Form.Control className="user-input" type="text" placeholder="Select a username" name="username" required onChange={(e)=>{setUsername(e.target.value); setUsernameErr(false)}}/>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className="form-label">Email</Form.Label>
@@ -110,6 +114,10 @@ function Login() {
                             <Button variant="primary" className="submit-button" onClick={checkSubmit}>Submit</Button>
                         </div>
                         <div className="error-container">
+                            {usernameErr?
+                              <p className="error-message">Username is already taken</p>:
+                              <br className="nothing"/>  
+                            }
                             {passErr?
                                 <p className="error-message">Passwords Must Match</p>:
                                 <br className="nothing"/>  
