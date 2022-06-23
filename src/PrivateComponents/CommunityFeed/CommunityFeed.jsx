@@ -8,7 +8,6 @@ import './CommunityFeed.css'
 function CommunityFeed() {
     return (
         <div className="CommunityFeed">
-            <h1>This is the Community Feed component</h1>
             <Resources/>
             <Posts/>
             <GroupOverview/>

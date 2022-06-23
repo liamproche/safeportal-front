@@ -48,7 +48,6 @@ function Profile() {
   return (
       <div className="Profile">
         <Nav/>
-        <Resources/>
         <h1>This is the profile form</h1>
         <p onClick={toggleEditModal}>Edit Profile</p>
         <Modal className="m" show={showEditModal}>
