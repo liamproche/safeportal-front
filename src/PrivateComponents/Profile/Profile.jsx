@@ -1,18 +1,25 @@
 import Nav from "../Nav/Nav";
 import { useState } from "react";
-import { Form, Button } from 'react-bootstrap'
-import "./ProfileForm.css"
+import { Modal, Form, Button } from 'react-bootstrap'
+import "./Profile.css"
 
-function ProfileForm() {
+function Profile() {
   const [username, setUsername] = useState('')
   const [pronouns, setPronouns] = useState('')
   const [countryOfOrigin, setCountryOfOrigin] = useState('')
   const [currentLocation, setCurrentLocation] = useState(' ')
   const [aboutMe, setAboutMe] = useState('')
+  const [showEditModal, setShowEditModal] = useState(false)
+  const toggleEditModal = () =>{
+    setShowEditModal(!showEditModal)
+  }
+  
   return (
       <div className="ProfileForm">
         <Nav/>
         <h1>This is the profile form</h1>
+        <p onClick={toggleEditModal}>Edit Profile</p>
+        <Modal className="m" show={showEditModal}>
         <Form id="profile-form" className="rounded p-4 p-sm-3">
           <input type="file"></input>
           <p>Profile Photo</p>
@@ -37,9 +44,9 @@ function ProfileForm() {
             <Form.Control className="big-user-input" type="about-me" placeholder='Input a snippet about who you are and why you joined SPI virtual community' name="aboutMe" value={aboutMe} onChange={(e)=>{setAboutMe(e.target.value); console.log(aboutMe)}}/>
           </Form.Group>
         </Form>
-
+      </Modal>
       </div>
     );
 }
 
-export default ProfileForm
+export default Profile

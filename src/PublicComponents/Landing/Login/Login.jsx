@@ -8,6 +8,7 @@ function Login() {
     const {loginUser, user, incorrectCredentials} = useContext(AuthContext)
     const [showCreateAccount, setShowCreateAccount] = useState(false)
     const [username, setUsername]=useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
     const [accessCode, setAccessCode] = useState('')
@@ -30,8 +31,9 @@ function Login() {
     const submitNewUser = async () => { 
         const user = {
           username: username,
+          email: email,
           password: password,
-          accessCode: accessCode
+        //   accessCode: accessCode
         }
         console.log(user)
         try{
@@ -83,6 +85,10 @@ function Login() {
                         <Form.Group>
                             <Form.Label className="form-label">Username</Form.Label>
                             <Form.Control className="user-input" type="text" placeholder="Select a username" name="username" required onChange={(e)=>{setUsername(e.target.value)}}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className="form-label">Email</Form.Label>
+                            <Form.Control className="user-input" type="email" placeholder="Enter your email" name="email" required onChange={(e)=>{setEmail(e.target.value)}}/>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className="form-label">Password</Form.Label>
