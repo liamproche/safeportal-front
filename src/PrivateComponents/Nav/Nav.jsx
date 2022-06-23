@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import './Nav.css'
 
 function Nav() {
@@ -12,7 +12,9 @@ function Nav() {
             <Link to="/groups">Groups</Link>
             <Link to="/testimonials">Testimonials</Link>
             <p>Direct Message</p>
-            <p>Report</p>
+            <Link to="/report">Report</Link>
+            
+            {/* THIS IS WHERE THE FUNCTION NEEDS TO RETURN NAVIGATE */}
             <p className="logout-link" onClick={logoutUser}>Logout</p>
         </nav>
     )
