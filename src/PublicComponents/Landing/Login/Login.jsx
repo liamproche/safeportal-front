@@ -105,8 +105,6 @@ function Login() {
                         <p className="error-message">Passwords Must Match</p>:
                         <br className="nothing"/>  
                     }
-                    
-
                 </Modal.Footer>
             </Modal>
             <p className="create-account-link" onClick={showModal}>Create an account</p>
