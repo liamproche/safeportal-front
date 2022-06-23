@@ -1,4 +1,5 @@
 import Nav from "../Nav/Nav";
+import Resources from "../Resources/Resources";
 import { useState, useContext } from "react";
 import { Modal, Form, Button } from 'react-bootstrap'
 import AuthContext from "../../context/AuthContext";
@@ -47,6 +48,7 @@ function Profile() {
   return (
       <div className="Profile">
         <Nav/>
+        <Resources/>
         <h1>This is the profile form</h1>
         <p onClick={toggleEditModal}>Edit Profile</p>
         <Modal className="m" show={showEditModal}>
