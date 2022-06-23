@@ -29,8 +29,8 @@ function Profile() {
     formData.append("about", aboutMe)
     formData.append("interests", interests)
     formData.append('userId', user.id)
-    const response = await fetch("http://localhost:3001/")
-  
+    const response = await fetch("http://localhost:3001/profiles")
+    
   }
   const handleImageUpload = (e) =>{
     let file = e.target.files[0]
@@ -75,8 +75,10 @@ function Profile() {
           </Form.Group>
         </Form>
         <Modal.Footer>
-          <Button variant="secondary" onClick={toggleEditModal}>Close</Button>
-          <Button variant="primary" type="submit">Submit</Button>
+          <div className="button-container">
+            <Button variant="secondary" onClick={toggleEditModal}>Close</Button>
+            <Button variant="primary" type="submit">Submit</Button>
+          </div>
         </Modal.Footer>
       </Modal>
       </div>
