@@ -24,3 +24,14 @@
     text-decoration: underline;
     cursor: pointer;
 }
+.modal-footer{
+    color: red;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.button-container{
+    align-self: flex-end;
+    display: flex;
+    width: 175px;
+    justify-content: space-between;
+}

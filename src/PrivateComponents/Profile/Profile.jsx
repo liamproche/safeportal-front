@@ -43,6 +43,9 @@ function Profile() {
         <h1>This is the profile form</h1>
         <p onClick={toggleEditModal}>Edit Profile</p>
         <Modal className="m" show={showEditModal}>
+        <Modal.Header>
+          <h3>Edit Profile</h3>
+        </Modal.Header>
         <Form id="profile-form" className="rounded p-4 p-sm-3">
           <input type="file" name="image" accept="image/*" onChange={handleImageUpload}></input>
           <p>Profile Photo</p>
@@ -71,6 +74,10 @@ function Profile() {
             <Form.Control className="big-user-input" type="text" placeholder='Input your interests' name="interests" value={interests} onChange={(e)=>{setInterests(e.target.value); console.log(interests)}}/>
           </Form.Group>
         </Form>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={toggleEditModal}>Close</Button>
+          <Button variant="primary" type="submit">Submit</Button>
+        </Modal.Footer>
       </Modal>
       </div>
     );
