@@ -63,7 +63,7 @@ function Profile() {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label className="currentLocation-form-label">Current Location</Form.Label>
-            <Form.Control className="user-input" type="text" placeholder='Current location' name="currentLocation" value={currentLocation} onChange={(e)=>{setCurrentLocation(e.target.value); console.log(currentLocation)}}/>
+            <Form.Control className="user-input" placeholder="Enter current location" type="text" name="currentLocation" onChange={(e)=>{setCurrentLocation(e.target.value); console.log(currentLocation)}}/>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label className="about-me-form-label">About Me</Form.Label>
