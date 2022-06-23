@@ -3,10 +3,10 @@ import { useState, useContext } from "react";
 import { Modal, Form, Button } from 'react-bootstrap'
 import AuthContext from "../../context/AuthContext";
 import "./Profile.css"
-import { propTypes } from "react-bootstrap/esm/Image";
 
-function Profile(props) {
-  const [profile, setProfile] = useState(...props.profile)
+function Profile() {
+  //NOTE CHANGE THIS TO THE USERS PROFILE AFTER DECIDING WHERE STATE LIVES AND PASSING PROPS
+  const [profile, setProfile] = useState('')
   const [username, setUsername] = useState('')
   const [pronouns, setPronouns] = useState('')
   const [countryOfOrigin, setCountryOfOrigin] = useState('')
@@ -35,9 +35,8 @@ function Profile(props) {
       method: "PUT",
       body: formData
     })
-    const parsedResponse = await response.json()
-    
-    //CHECK THIS IF DOESN'T WORK
+    const parsedResponse = await response.json()   
+    //CHECK THIS IF NOT WORKING
     setProfile(parsedResponse)
   }
   const handleImageUpload = (e) =>{
@@ -54,7 +53,7 @@ function Profile(props) {
         <Modal.Header>
           <h3>Edit Profile</h3>
         </Modal.Header>
-        <Form id="profile-form" className="rounded p-4 p-sm-3">
+        <Form id="profile-form" className="rounded p-4 p-sm-3" onSubmit={handleFormSubmission}>
           <input type="file" name="image" accept="image/*" onChange={handleImageUpload}></input>
           <p>Profile Photo</p>
           <Form.Group className="mb-3">

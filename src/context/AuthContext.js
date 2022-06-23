@@ -49,6 +49,7 @@ export const AuthProvider=({children})=>{
         setAuthTokens(null)
         setUser(null)
         localStorage.removeItem('authTokens')
+        console.log('user logged out')
         return <Navigate to="/"/>
       }
       //BEGIN REFRESH TOKEN CALLS
