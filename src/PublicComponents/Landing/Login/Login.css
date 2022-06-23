@@ -17,3 +17,10 @@
 .nothing{
     display: none;
 }
+.create-account-link{
+    margin-left: 5%;
+}
+.create-account-link:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

@@ -1,12 +1,61 @@
 import AuthContext from '../../../context/AuthContext'
 import { useState, useContext } from 'react'
 import { Navigate, Link } from 'react-router-dom'
-import { Form, Button } from 'react-bootstrap'
+import { Modal, Form, Button } from 'react-bootstrap'
 import './Login.css'
-
 
 function Login() {
     const {loginUser, user, incorrectCredentials} = useContext(AuthContext)
+    const [showCreateAccount, setShowCreateAccount] = useState(false)
+    const [username, setUsername]=useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPass, setConfirmPass] = useState('')
+    const [accessCode, setAccessCode] = useState('')
+    const [passErr, setPassErr] = useState(null)
+    const showModal = ()=>{
+        setShowCreateAccount(!showCreateAccount)
+    }
+    const checkSubmit = (e) =>{
+        e.preventDefault()
+        console.log(password)
+        if(password === confirmPass){
+          submitNewUser()
+          console.log('user submitted')
+        }
+        else{
+          setPassErr(true)
+          console.log('there was a pass err')
+        }
+      }
+    const submitNewUser = async () => { 
+        const user = {
+          username: username,
+          password: password,
+          accessCode: accessCode
+        }
+        console.log(user)
+        try{
+          const response = await fetch('http://localhost:3001/user', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+          })
+          const parsedResponse = await response.json()
+          if(parsedResponse.user){
+            return <Navigate to ='/'/>
+          }
+          else{
+            setUsername('')
+            setPassword('')
+            setConfirmPass('')
+          }
+        }catch(err){
+          console.log(err)
+          alert("Please try you request again")
+        }
+      }
     return !user ?
         <div className="Login">
             <Form id="login-form" className="rounded p-4 p-sm-3" onSubmit={loginUser}>
@@ -24,8 +73,44 @@ function Login() {
                 <br className="nothing"/>
                 }
             </div>
-            <Button className="form-button" varient="primary" type="submit">Login</Button>
-          </Form>
+                <Button className="form-button" varient="primary" type="submit">Login</Button>
+            </Form>
+            {/* BEGIN MODAL*/}
+            <Modal className="m" show={showCreateAccount}>
+                <Modal.Header id="modal-header-text">Create An Account</Modal.Header>
+                <Modal.Body>
+                    <Form onSubmit={checkSubmit}>
+                        <Form.Group>
+                            <Form.Label className="form-label">Username</Form.Label>
+                            <Form.Control className="user-input" type="text" placeholder="Select a username" name="username" required onChange={(e)=>{setUsername(e.target.value)}}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className="form-label">Password</Form.Label>
+                            <Form.Control className="user-input" type="password" placeholder="Select a password" name="password" required onChange={(e)=>{setPassword(e.target.value)}}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className="form-label">Confirm Password</Form.Label>
+                            <Form.Control className="user-input" type="password" placeholder="Confirm your password" name="confirmPass" required onChange={(e)=>{setConfirmPass(e.target.value)}}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className="form-label">Access Code</Form.Label>
+                            <Form.Control className="user-input" type="password" placeholder="Please enter your access code" name="accessCode" required onChange={(e)=>{setAccessCode(e.target.value)}}/>
+                        </Form.Group>
+                            <Button variant="secondary" onClick={showModal}>Close</Button>
+                            <Button variant="primary" type="submit">Submit</Button>
+                        </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    {passErr?
+                        <p className="error-message">Passwords Must Match</p>:
+                        <br className="nothing"/>  
+                    }
+                    
+
+                </Modal.Footer>
+            </Modal>
+            <p className="create-account-link" onClick={showModal}>Create an account</p>
+        {/* THIS IS THE OVERALL COMPONENT DIV */}
         </div>:
         <Navigate to="/"/>
 
