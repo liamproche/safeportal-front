@@ -10,7 +10,7 @@ function Nav() {
             <Link to="/">Community Feed</Link>
             <Link to="/profile">Profile</Link>
             <Link to="/groups">Groups</Link>
-            <p>Testimonials</p>
+            <Link to="/testimonials">Testimonials</Link>
             <p>Direct Message</p>
             <p>Report</p>
             <p className="logout-link" onClick={logoutUser}>Logout</p>
