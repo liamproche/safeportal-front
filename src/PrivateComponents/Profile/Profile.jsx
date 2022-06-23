@@ -53,7 +53,7 @@ function Profile() {
         <Modal.Header>
           <h3>Edit Profile</h3>
         </Modal.Header>
-        <Form id="profile-form" className="rounded p-4 p-sm-3" onSubmit={handleFormSubmission}>
+        <Form id="profile-form" className="rounded p-4 p-sm-3" encType="multipart/form" onSubmit={handleFormSubmission}>
           <input type="file" name="image" accept="image/*" onChange={handleImageUpload}></input>
           <p>Profile Photo</p>
           <Form.Group className="mb-3">
