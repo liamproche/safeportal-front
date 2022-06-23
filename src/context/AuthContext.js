@@ -48,9 +48,6 @@ export const AuthProvider=({children})=>{
         setAuthTokens(null)
         setUser(null)
         localStorage.removeItem('authTokens')
-        console.log('user logged out')
-        // window.location.reload(false)
- 
       }
       //BEGIN REFRESH TOKEN CALLS
       const updateToken= async () =>{
