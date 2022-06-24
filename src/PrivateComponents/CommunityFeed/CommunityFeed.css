@@ -1,0 +1,6 @@
+.CommunityFeed{
+    display: grid;
+    grid-template-columns: .5fr 1fr .5fr;
+    border: 2px solid purple;
+    margin: 0 5%;
+}

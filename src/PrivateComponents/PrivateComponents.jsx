@@ -1,9 +1,6 @@
 import { useContext } from "react";
 import Landing from "../PublicComponents/Landing/Landing";
-import Testimonials from "./Testimonials/Testimonials";
-import Messages from "./Messages/Messages";
-import Groups from "./Groups/Groups";
-import Reports from "./Reports/Reports";
+import CommunityFeed from "./CommunityFeed/CommunityFeed";
 import AuthContext from '../context/AuthContext';
 import Nav from "./Nav/Nav";
 
@@ -13,10 +10,7 @@ function PrivateComponents() {
   return user ?
       <div className="PrivateComponents">
         <Nav/>
-        <Testimonials/>
-        <Messages/>
-        <Groups/>
-        <Reports/>
+        <CommunityFeed/>
       </div>:
       <Landing/>
 }
