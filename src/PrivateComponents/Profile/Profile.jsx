@@ -25,7 +25,7 @@ function Profile() {
     console.log(user.user.id)
     console.log(user)
     const formData = new FormData()
-    formData.append("image", image)
+    formData.append("avatar", image)
     formData.append("nickname", username)
     formData.append("pronouns", pronouns)
     //NOTE CHANGE BELOW WHEN ADDITIONAL COUNTRY FIELD IS KNOWN

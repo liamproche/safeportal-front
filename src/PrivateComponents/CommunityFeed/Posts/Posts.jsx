@@ -6,6 +6,7 @@ import "./Posts.css"
 
 function Posts(){
     const [postContent, setPostContent] = useState('')
+    const [posts, setPosts] = useState([])
     const [image, setImage] = useState('')
     const { user, authTokens } = useContext(AuthContext)
     const getPosts = async ()=>{
@@ -13,6 +14,7 @@ function Posts(){
             const response = await fetch('http://localhost:3001/post')
             const parsedResponse = await response.json()
             console.log(parsedResponse)
+            setPosts(parsedResponse.posts)
         }catch(err){
             console.log(err)
             //TO-DO ERROR HANDLING
@@ -26,7 +28,7 @@ function Posts(){
             image : "this is an url"
         }
         console.log(post)
-        e.preventDefault()
+        // e.preventDefault()
         try{
             const response = await fetch('http://localhost:3001/post', {
                 method: 'POST',
@@ -42,6 +44,7 @@ function Posts(){
             //TODO- ERROR HANDLING
         }
     }
+    useEffect(()=>getPosts, [])
     return (
         <div className="Posts">
             <div className="post-form-container">
@@ -53,7 +56,14 @@ function Posts(){
                     <Button id="post-submit-button" variant="primary" type="submit">Submit</Button>
                 </Form>
             </div>
-            <IndividualPost/>
+            {posts.map((post)=>{
+            return <IndividualPost key={post.id} content={post.content} image={post.image} user={user.user.id}/>})}
+        
+
+
+
+
+        {/* THIS IS THE OVERALL COMPONENT DIV */}
         </div>
     )}
   

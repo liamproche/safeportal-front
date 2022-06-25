@@ -1,9 +1,9 @@
 import './IndividualPost.css'
 
-function IndividualPost(){
+function IndividualPost(props){
     return (
-        <div className="Posts">
-            <h2>This is the Individual Post compoenet</h2>
+        <div className="IndividualPost">
+            <h3>{props.user}</h3>
         </div>
     )}
   
