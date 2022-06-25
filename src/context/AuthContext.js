@@ -92,6 +92,7 @@ export const AuthProvider=({children})=>{
     const contextData={
         incorrectCredentials: incorrectCredentials,
         user: user,
+        authTokens : authTokens,
         loginUser: loginUser,
         logoutUser: logoutUser,
         updateToken: updateToken,
