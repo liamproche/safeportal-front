@@ -28,7 +28,7 @@ function IndividualPost(props){
                         </div>
                     </Accordion.Header>
                     <Accordion.Body id="accordion-body">
-                        <Comment comments={props.post.Comments}/>
+                        <Comment comments={props.post.Comments} post={props.post}/>
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
