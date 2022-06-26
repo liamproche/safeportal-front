@@ -1,3 +1,5 @@
+import { Accordion } from "react-bootstrap"
+import Comment from "./Comment/Comment"
 import './IndividualPost.css'
 
 function IndividualPost(props){
@@ -11,13 +13,25 @@ function IndividualPost(props){
       }
     return (
         <div className="IndividualPost">
-            <p>Username?</p>
-            <p>Date: {formatDate(props.post.createdAt)}</p>
-            <p>{props.post.content}</p>
-            <div className="controller-container">
-                <button>Like</button>
-                <button>Comment</button>
-            </div>
+            <Accordion flush className="accordion-container">
+                <Accordion.Item eventKey="0" id="accordian-item">
+                    <Accordion.Header className="accordion-header">
+                        <div className="post-header-container">
+                            <img src={process.env.PUBLIC_URL + 'img/no-profile-image.png'} alt="Profile Image" className="post-profile-image"/>
+                            <div className="post">
+                                <p>Username?</p>
+                                <p>Date: {formatDate(props.post.createdAt)}</p>
+                                <p>{props.post.content}</p>
+                            </div>
+                        </div>
+                        <div className="post-controls">
+                        </div>
+                    </Accordion.Header>
+                    <Accordion.Body id="accordion-body">
+                        <Comment comments={props.post.Comments} post={props.post}/>
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
         {/* THIS IS THE OVERALL COMPOENET DIV     */}
         </div>
     )}
