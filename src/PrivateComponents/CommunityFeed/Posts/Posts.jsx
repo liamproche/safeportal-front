@@ -51,7 +51,7 @@ function Posts(){
                 <img className="profile-image" src={process.env.PUBLIC_URL + 'img/no-profile-image.png'} alt="Profile Image"/>
                 <Form id="post-form" className="rounded p-4 p-sm-3" onSubmit={submitPost}>
                     <Form.Group className="mb-3">
-                        <Form.Control className="user-input" id="post-form" type="text" placeholder="What's on your mind, username" name="post" required value={postContent} onChange={(e)=>{setPostContent(e.target.value); console.log(postContent)}}/>
+                        <Form.Control className="user-input" id="post-form" type="text" placeholder="What's on your mind?" name="post" required value={postContent} onChange={(e)=>{setPostContent(e.target.value); console.log(postContent)}}/>
                     </Form.Group>
                     <Button id="post-submit-button" variant="primary" type="submit">Submit</Button>
                 </Form>
