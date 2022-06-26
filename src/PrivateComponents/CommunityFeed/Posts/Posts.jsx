@@ -13,8 +13,9 @@ function Posts(){
         try{
             const response = await fetch('http://localhost:3001/post')
             const parsedResponse = await response.json()
-            console.log(parsedResponse)
-            setPosts(parsedResponse.posts)
+            const sortedPosts = parsedResponse.posts.sort((a, b)=>b.id - a.id)
+            console.log(sortedPosts)
+            setPosts(sortedPosts)
         }catch(err){
             console.log(err)
             //TO-DO ERROR HANDLING
@@ -27,8 +28,6 @@ function Posts(){
             content : postContent,
             image : "this is an url"
         }
-        console.log(post)
-        // e.preventDefault()
         try{
             const response = await fetch('http://localhost:3001/post', {
                 method: 'POST',
