@@ -1,8 +1,8 @@
 import "./IndividualComment.css"
 
-function IndividualComment() {
+function IndividualComment(props) {
     return <div className="IndividualComment">
-        <h2>This is the individual comment component</h2>
+        <h2>{props.comment.content}</h2>
     </div>
 }
 
