@@ -34,7 +34,6 @@ function Login() {
           password: password,
         //   accessCode: accessCode
         }
-        console.log(user)
         try{
           const response = await fetch('http://localhost:3001/user', {
             method: 'POST',
