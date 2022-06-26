@@ -4,6 +4,9 @@ import AuthContext from '../../../context/AuthContext'
 import IndividualPost from "./IndividualPost/IndividualPost"
 import "./Posts.css"
 
+
+//COMMENT FETCHES HAPPEN HERE????
+
 function Posts(){
     const [postContent, setPostContent] = useState('')
     const [posts, setPosts] = useState([])
@@ -43,7 +46,7 @@ function Posts(){
             //TODO- ERROR HANDLING
         }
     }
-    useEffect(()=>getPosts, [])
+    useEffect(()=>getPosts, [])  
     return (
         <div className="Posts">
             <div className="post-form-container">
@@ -56,8 +59,7 @@ function Posts(){
                 </Form>
             </div>
             {posts.map((post)=>{
-            return <IndividualPost key={post.id} post={post} userId={user.user.id}/>})}
-        
+            return <IndividualPost key={post.id} post={post} userId={user.user.id}/>})} 
         {/* THIS IS THE OVERALL COMPONENT DIV */}
         </div>
     )}

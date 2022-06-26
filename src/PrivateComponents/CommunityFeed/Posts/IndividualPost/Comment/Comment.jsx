@@ -1,10 +1,13 @@
 import IndividualComment from "./IndividualComment.jsx/IndividualComment"
 import "./Comment.css"
 
-function Comment() {
+function Comment(props) {
     return <div className="Comment">
-        <h2>This is the comment component</h2>
-        <IndividualComment/>
+        {props.comments.length === 0?
+            <h2>There are no comments</h2>:
+            props.comments.map((comment)=>{
+                return <IndividualComment key={comment.id} comment={comment}/>
+            })}
     </div>
 }
 

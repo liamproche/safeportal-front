@@ -11,7 +11,6 @@ function IndividualPost(props){
         let newDate = `${month}/${day}/${year}`
         return newDate
       }
-    //NOTE-COMMENT API CALLS SHOULD HAPPEN HERE
     return (
         <div className="IndividualPost">
             <Accordion flush className="accordion-container">
@@ -29,11 +28,8 @@ function IndividualPost(props){
                         </div>
                     </Accordion.Header>
                     <Accordion.Body id="accordion-body">
-                        <Comment/>
+                        <Comment comments={props.post.Comments}/>
                     </Accordion.Body>
-                <div className="controller-container">
-
-            </div>
                 </Accordion.Item>
             </Accordion>
         {/* THIS IS THE OVERALL COMPOENET DIV     */}
