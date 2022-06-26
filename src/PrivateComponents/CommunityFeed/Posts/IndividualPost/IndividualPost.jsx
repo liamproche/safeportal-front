@@ -1,3 +1,5 @@
+import { Accordion } from "react-bootstrap"
+import Comment from "./Comment/Comment"
 import './IndividualPost.css'
 
 function IndividualPost(props){
@@ -9,15 +11,31 @@ function IndividualPost(props){
         let newDate = `${month}/${day}/${year}`
         return newDate
       }
+    //NOTE-COMMENT API CALLS SHOULD HAPPEN HERE
     return (
         <div className="IndividualPost">
-            <p>Username?</p>
-            <p>Date: {formatDate(props.post.createdAt)}</p>
-            <p>{props.post.content}</p>
-            <div className="controller-container">
-                <button>Like</button>
-                <button>Comment</button>
+            <Accordion flush className="accordion-container">
+                <Accordion.Item eventKey="0" id="accordian-item">
+                    <Accordion.Header className="accordion-header">
+                        <div className="post-information">
+                            <img src={process.env.PUBLIC_URL + 'img/no-profile-image.png'} alt="Profile Image" className="profile-image"/>
+                            <p>Username?</p>
+                            <p>Date: {formatDate(props.post.createdAt)}</p>
+                            <p>{props.post.content}</p>
+                        </div>
+                        <div className="post-controls">
+                            <button>Like</button>
+                            <button>Comment</button>
+                        </div>
+                    </Accordion.Header>
+                    <Accordion.Body id="accordion-body">
+                        <Comment/>
+                    </Accordion.Body>
+                <div className="controller-container">
+
             </div>
+                </Accordion.Item>
+            </Accordion>
         {/* THIS IS THE OVERALL COMPOENET DIV     */}
         </div>
     )}
