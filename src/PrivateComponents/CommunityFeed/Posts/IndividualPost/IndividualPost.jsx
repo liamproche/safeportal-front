@@ -19,7 +19,8 @@ function IndividualPost(props){
                         <div className="post-header-container">
                             <img src={process.env.PUBLIC_URL + 'img/no-profile-image.png'} alt="Profile Image" className="post-profile-image"/>
                             <div className="post">
-                                <p>Username?</p>
+                                {/* NOTE-TO GET THIS UPDATE CONTEXT TO HOLD FULL USER OBJECT INSTEAD OF JUST ID */}
+                                <p>Username</p>
                                 <p>Date: {formatDate(props.post.createdAt)}</p>
                                 <p>{props.post.content}</p>
                             </div>

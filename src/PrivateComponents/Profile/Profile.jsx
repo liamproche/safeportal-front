@@ -41,7 +41,6 @@ function Profile() {
     })
     const parsedResponse = await response.json()
     console.log(parsedResponse)
-    //CHECK THIS IF NOT WORKING
     setProfile(parsedResponse)
   }
   const handleImageUpload = (e) =>{
@@ -51,8 +50,13 @@ function Profile() {
   return (
       <div className="Profile">
         <Nav/>
-        <h1>This is the profile form</h1>
-        <p onClick={toggleEditModal}>Edit Profile</p>
+        <div className="profile-container">
+          <Resources/>
+          <h1>This is the profile form</h1>
+          <div className= "edit-profile-link-container">
+            <p onClick={toggleEditModal}>Edit Profile</p>
+          </div>
+        </div>
         <Modal className="m" show={showEditModal}>
         <Modal.Header>
           <h3>Edit Profile</h3>
@@ -88,13 +92,10 @@ function Profile() {
           <Button variant="primary" type="submit">Submit</Button>
         </Form>
         <Modal.Footer>
-          <div className="button-container">
-
-          </div>
         </Modal.Footer>
       </Modal>
-      </div>
-    );
+    </div>
+  );
 }
 
 export default Profile

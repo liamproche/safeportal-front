@@ -7,6 +7,7 @@ import "./Comment.css"
 function Comment(props) {
     const { user } = useContext(AuthContext)
     const [comment, setComment] = useState('')
+    const [comments, setComments] = useState([...props.comments])
     const handleCommentInput = (e) =>{
         setComment(e.target.value)
         console.log(comment)
@@ -28,6 +29,7 @@ function Comment(props) {
             })
             const parsedResponse = await response.json()
             console.log(parsedResponse)
+            setComments([...comments, parsedResponse])
         }catch(err){
             console.log(err)
             //TODO- ERROR HANDLING
@@ -36,7 +38,7 @@ function Comment(props) {
     return <div className="Comment">
                 {props.comments.length === 0?
                     <h2>There are no comments</h2>:
-                    props.comments.map((comment)=>{
+                    comments.map((comment)=>{
                         return <IndividualComment key={comment.id} comment={comment}/>
                 })}  
             <Form id="comment-form" className="rounded p-4 p-sm-3" onSubmit={submitComment}>
