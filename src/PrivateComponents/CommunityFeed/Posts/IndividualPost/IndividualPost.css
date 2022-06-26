@@ -6,3 +6,13 @@
 .IndividualPost{
     border: 2px solid black;
 }
+.post{
+    margin-left: 5%;
+}
+.post-header-container{
+    display: flex;
+}
+.post-profile-image{
+    max-width: 95px;
+    max-height: 95px;
+}

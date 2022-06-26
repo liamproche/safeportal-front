@@ -17,15 +17,15 @@ function IndividualPost(props){
             <Accordion flush className="accordion-container">
                 <Accordion.Item eventKey="0" id="accordian-item">
                     <Accordion.Header className="accordion-header">
-                        <div className="post-information">
-                            <img src={process.env.PUBLIC_URL + 'img/no-profile-image.png'} alt="Profile Image" className="profile-image"/>
-                            <p>Username?</p>
-                            <p>Date: {formatDate(props.post.createdAt)}</p>
-                            <p>{props.post.content}</p>
+                        <div className="post-header-container">
+                            <img src={process.env.PUBLIC_URL + 'img/no-profile-image.png'} alt="Profile Image" className="post-profile-image"/>
+                            <div className="post">
+                                <p>Username?</p>
+                                <p>Date: {formatDate(props.post.createdAt)}</p>
+                                <p>{props.post.content}</p>
+                            </div>
                         </div>
                         <div className="post-controls">
-                            <button>Like</button>
-                            <button>Comment</button>
                         </div>
                     </Accordion.Header>
                     <Accordion.Body id="accordion-body">
