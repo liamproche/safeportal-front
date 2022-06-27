@@ -61,7 +61,7 @@ function Posts(){
                 </Form>
             </div>
             {posts.map((post)=>{
-            return <IndividualPost key={post.id} post={post} userId={user.user.id}/>})} 
+            return <IndividualPost key={post.id} post={post} userId={user.id}/>})} 
         {/* THIS IS THE OVERALL COMPONENT DIV */}
         </div>
     )}

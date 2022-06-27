@@ -28,7 +28,7 @@ export const AuthProvider=({children})=>{
         const data = await response.json()
         if(response.status === 200){
           setAuthTokens({access:data.token, refresh: data.refreshToken})
-          setUser(jwt_decode(data.token))
+          setUser(data.user)
           localStorage.setItem('authTokens', JSON.stringify({access:data.token, refresh: data.refreshToken}))
           setIncorrectCredentials(false)
         }
