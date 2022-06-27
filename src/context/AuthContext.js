@@ -27,9 +27,9 @@ export const AuthProvider=({children})=>{
         })
         const data = await response.json()
         if(response.status === 200){
-          setAuthTokens({acces:data.token, refresh: data.refreshToken})
+          setAuthTokens({access:data.token, refresh: data.refreshToken})
           setUser(jwt_decode(data.token))
-          localStorage.setItem('authTokens', JSON.stringify({acces:data.token, refresh: data.refreshToken}))
+          localStorage.setItem('authTokens', JSON.stringify({access:data.token, refresh: data.refreshToken}))
           setIncorrectCredentials(false)
         }
         else if(response.status === 401){
@@ -63,7 +63,7 @@ export const AuthProvider=({children})=>{
           })
           const data = await response.json()
           if(response.status === 200){
-            setAuthTokens({acces:data.token, refresh: data.refreshToken})
+            setAuthTokens({access:data.token, refresh: data.refreshToken})
             setUser(jwt_decode(data.token))
             localStorage.setItem('authTokens', JSON.stringify(authTokens))
           }

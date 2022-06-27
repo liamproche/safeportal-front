@@ -14,10 +14,14 @@ function Posts(){
     const { user, authTokens } = useContext(AuthContext)
     const getPosts = async ()=>{
         try{
-            const response = await fetch('http://localhost:3001/post')
+            const response = await fetch('http://localhost:3001/post',{
+                headers: new Headers({
+                    "Content-Type": "application.json",
+                    "Authorization": `Bearer ${authTokens.access}`
+                })
+            })
             const parsedResponse = await response.json()
             const sortedPosts = parsedResponse.posts.sort((a, b)=>b.id - a.id)
-            console.log(sortedPosts)
             setPosts(sortedPosts)
         }catch(err){
             console.log(err)
@@ -25,7 +29,9 @@ function Posts(){
         }
     }
     const submitPost = async (e) =>{
+        e.preventDefault()
         console.log(user.user.id)
+        console.log(authTokens)
         const post = {
             userId : user.user.id,
             content : postContent,
@@ -34,9 +40,10 @@ function Posts(){
         try{
             const response = await fetch('http://localhost:3001/post', {
                 method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${authTokens.access}`
+                }),
                 body: JSON.stringify(post)
             })
             const parsedResponse = await response.json()

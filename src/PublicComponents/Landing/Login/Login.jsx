@@ -32,7 +32,7 @@ function Login() {
           username: username,
           email: email,
           password: password,
-        //   accessCode: accessCode
+          accessCode: accessCode
         }
         try{
           const response = await fetch('http://localhost:3001/user', {
