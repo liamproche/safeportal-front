@@ -42,7 +42,6 @@ export const AuthProvider=({children})=>{
         console.log(err)
         //TODO: ERROR HANDLING
       }}
-
       //BEGIN LOGOUT FUNCTION
       const logoutUser=()=>{
         setAuthTokens(null)
@@ -76,6 +75,7 @@ export const AuthProvider=({children})=>{
           console.log(err)
           //TODO: ERROR HANDLING
         }
+      }
   //TO CALL REFRESH FUNCTION BEFORE 5MIN UP
   //NOTE-CHANGE BACK TO 4MIN INTERVAL
   useEffect(() => {
@@ -95,8 +95,8 @@ export const AuthProvider=({children})=>{
     loginUser: loginUser,
     logoutUser: logoutUser,
     updateToken: updateToken,
-  };
+  }
   return (
     <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
-  );
-};
+  )
+}

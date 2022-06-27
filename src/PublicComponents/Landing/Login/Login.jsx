@@ -32,7 +32,7 @@ function Login() {
       email: email,
       password: password,
       accessCode: accessCode,
-    };
+    }
     try {
       const response = await fetch("http://localhost:3001/user", {
         method: "POST",
@@ -44,12 +44,16 @@ function Login() {
       const parsedResponse = await response.json();
       if (parsedResponse.message === "username is taken") {
         setUsernameErr(true);
-      } else if (parsedResponse.user) {
+      }
+       else if (parsedResponse.user) {
         return <Navigate to="/" />;
       } else {
         setUsername("");
         setPassword("");
         setConfirmPass("");
+      }}catch(err){
+        console.log(err)
+        //TODO-ERROR HANDLING
       }
     const submitNewUser = async () => { 
         const user = {
@@ -152,6 +156,6 @@ function Login() {
         {/* THIS IS THE OVERALL COMPONENT DIV */}
         </div>:
         <Navigate to="/"/>
-}
+}}
 
 export default Login;

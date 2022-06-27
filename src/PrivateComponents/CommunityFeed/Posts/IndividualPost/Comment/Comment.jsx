@@ -36,7 +36,7 @@ function Comment(props) {
             //TODO- ERROR HANDLING
         }
     }
-    return <div className="Comment">
+    return (<div className="Comment">
                 {props.comments.length === 0?
                     <h2>There are no comments</h2>:
                     comments.map((comment)=>{
