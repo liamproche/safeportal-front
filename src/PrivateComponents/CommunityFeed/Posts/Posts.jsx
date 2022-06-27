@@ -27,9 +27,8 @@ function Posts(){
         }
     }
     const submitPost = async (e) =>{
-        e.preventDefault()
         const post = {
-            userId : user.user.id,
+            userId : user.id,
             content : postContent,
             image : "this is an url"
         }
