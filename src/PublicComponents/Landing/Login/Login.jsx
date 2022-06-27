@@ -1,31 +1,55 @@
-import AuthContext from '../../../context/AuthContext'
-import { useState, useContext } from 'react'
-import { Navigate } from 'react-router-dom'
-import { Modal, Form, Button } from 'react-bootstrap'
-import './Login.css'
+import AuthContext from "../../../context/AuthContext";
+import { useState, useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { Modal, Form, Button } from "react-bootstrap";
+import "./Login.css";
 
 function Login() {
-    const {loginUser, user, incorrectCredentials} = useContext(AuthContext)
-    const [showCreateAccount, setShowCreateAccount] = useState(false)
-    const [username, setUsername]=useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPass, setConfirmPass] = useState('')
-    const [accessCode, setAccessCode] = useState('')
-    const [passErr, setPassErr] = useState(null)
-    const [usernameErr, setUsernameErr] = useState(null)
-    const showModal = ()=>{
-        setShowCreateAccount(!showCreateAccount)
+  const { loginUser, user, incorrectCredentials } = useContext(AuthContext);
+  const [showCreateAccount, setShowCreateAccount] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
+  const [accessCode, setAccessCode] = useState("");
+  const [passErr, setPassErr] = useState(null);
+  const [usernameErr, setUsernameErr] = useState(null);
+  const showModal = () => {
+    setShowCreateAccount(!showCreateAccount);
+  };
+  const checkSubmit = (e) => {
+    if (password === confirmPass) {
+      submitNewUser();
+      console.log("user submitted");
+    } else {
+      setPassErr(true);
+      console.log("there was a pass err");
     }
-    const checkSubmit = (e) =>{
-        if(password === confirmPass){
-          submitNewUser()
-          console.log('user submitted')
-        }
-        else{
-          setPassErr(true)
-          console.log('there was a pass err')
-        }
+  };
+  const submitNewUser = async () => {
+    const user = {
+      username: username,
+      email: email,
+      password: password,
+      accessCode: accessCode,
+    };
+    try {
+      const response = await fetch("http://localhost:3001/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      const parsedResponse = await response.json();
+      if (parsedResponse.message === "username is taken") {
+        setUsernameErr(true);
+      } else if (parsedResponse.user) {
+        return <Navigate to="/" />;
+      } else {
+        setUsername("");
+        setPassword("");
+        setConfirmPass("");
       }
     const submitNewUser = async () => { 
         const user = {
@@ -128,7 +152,6 @@ function Login() {
         {/* THIS IS THE OVERALL COMPONENT DIV */}
         </div>:
         <Navigate to="/"/>
-
 }
 
 export default Login;

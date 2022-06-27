@@ -1,9 +1,9 @@
-import { createContext, useState, useEffect } from 'react';
-import jwt_decode from 'jwt-decode';
+import { createContext, useState, useEffect } from "react";
+import jwt_decode from "jwt-decode";
 
-const AuthContext = createContext()
+const AuthContext = createContext();
 
-export default AuthContext
+export default AuthContext;
 
 export const AuthProvider=({children})=>{    
     const [user, setUser] = useState(()=>localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
@@ -76,27 +76,27 @@ export const AuthProvider=({children})=>{
           console.log(err)
           //TODO: ERROR HANDLING
         }
+  //TO CALL REFRESH FUNCTION BEFORE 5MIN UP
+  //NOTE-CHANGE BACK TO 4MIN INTERVAL
+  useEffect(() => {
+    const fourMinutes = 1000 * 60 * 4;
+    let interval = setInterval(() => {
+      if (authTokens) {
+        updateToken();
       }
-      //TO CALL REFRESH FUNCTION BEFORE 5MIN UP
-      //NOTE-CHANGE BACK TO 4MIN INTERVAL
-      useEffect(()=>{
-        const fourMinutes = 1000 * 60 * 4
-        let interval = setInterval(()=>{
-            if(authTokens){
-                updateToken()
-            }
-        }, fourMinutes)
-        return()=>clearInterval(interval)
-      })
-    
-    //THIS VARIABLE PASSES THE INFORMATION TO BE STORED IN CONTEXT (VARIABLES ON TOP/FUNCTIONS ON THE BOTTOM)
-    const contextData={
-        incorrectCredentials: incorrectCredentials,
-        user: user,
-        authTokens : authTokens,
-        loginUser: loginUser,
-        logoutUser: logoutUser,
-        updateToken: updateToken,
-    }
-    return <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
-}
+    }, fourMinutes);
+    return () => clearInterval(interval);
+  });
+  //THIS VARIABLE PASSES THE INFORMATION TO BE STORED IN CONTEXT (VARIABLES ON TOP/FUNCTIONS ON THE BOTTOM)
+  const contextData = {
+    incorrectCredentials: incorrectCredentials,
+    user: user,
+    authTokens: authTokens,
+    loginUser: loginUser,
+    logoutUser: logoutUser,
+    updateToken: updateToken,
+  };
+  return (
+    <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
+  );
+};

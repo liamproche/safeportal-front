@@ -1,9 +1,8 @@
-import { useState, useEffect, useContext } from 'react'
-import { Form, Button } from 'react-bootstrap'
-import AuthContext from '../../../context/AuthContext'
-import IndividualPost from "./IndividualPost/IndividualPost"
-import "./Posts.css"
-
+import { useState, useEffect, useContext } from "react";
+import { Form, Button } from "react-bootstrap";
+import AuthContext from "../../../context/AuthContext";
+import IndividualPost from "./IndividualPost/IndividualPost";
+import "./Posts.css";
 
 function Posts(){
     const [postContent, setPostContent] = useState('')

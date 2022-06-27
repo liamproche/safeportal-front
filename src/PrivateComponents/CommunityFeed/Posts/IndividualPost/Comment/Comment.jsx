@@ -1,8 +1,8 @@
-import { useState, useContext } from 'react'
-import { Form, Button } from 'react-bootstrap'
-import AuthContext from '../../../../../context/AuthContext'
-import IndividualComment from "./IndividualComment.jsx/IndividualComment"
-import "./Comment.css"
+import { useState, useContext } from "react";
+import { Form, Button } from "react-bootstrap";
+import AuthContext from "../../../../../context/AuthContext";
+import IndividualComment from "./IndividualComment.jsx/IndividualComment";
+import "./Comment.css";
 
 function Comment(props) {
     const { user, authTokens } = useContext(AuthContext)
@@ -50,6 +50,7 @@ function Comment(props) {
                 </Form.Group>
             </Form>
     </div>
+  );
 }
 
-export default Comment
+export default Comment;
