@@ -5,8 +5,6 @@ import IndividualPost from "./IndividualPost/IndividualPost"
 import "./Posts.css"
 
 
-//COMMENT FETCHES HAPPEN HERE????
-
 function Posts(){
     const [postContent, setPostContent] = useState('')
     const [posts, setPosts] = useState([])
