@@ -16,14 +16,12 @@ function Profile() {
   const [interests, setInterests] = useState('')
   const [showEditModal, setShowEditModal] = useState(false)
   const [image, setImage] = useState(null)
-  const { user } = useContext(AuthContext)
+  const { user, authTokens } = useContext(AuthContext)
   const toggleEditModal = () =>{
     setShowEditModal(!showEditModal)
   }
   const handleFormSubmission = async (e)=>{
     e.preventDefault()
-    console.log(user.user.id)
-    console.log(user)
     const formData = new FormData()
     formData.append("avatar", image)
     formData.append("nickname", username)
@@ -33,14 +31,17 @@ function Profile() {
     formData.append("country", currentLocation)
     formData.append("about", aboutMe)
     formData.append("interests", interests)
-    // formData.append("userId", user.user.id)
-    console.log(...formData)
+    formData.append("userId", user.user.id)
+    console.log(user.user.id)
     const response = await fetch(`http://localhost:3001/profile/${user.user.id}`,{
       method: "PUT",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authTokens.access}`
+      }),
       body: formData
     })
     const parsedResponse = await response.json()
-    console.log(parsedResponse)
     setProfile(parsedResponse)
   }
   const handleImageUpload = (e) =>{
