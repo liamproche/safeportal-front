@@ -56,9 +56,10 @@ export const AuthProvider=({children})=>{
             //CHANGE FOR DB DEPLOYMENT
             const response = await fetch('http://localhost:3001/user/refresh/', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
+            headers: new Headers({
+              'Content-Type': 'application/json',
+              'Authorization' : `Bearer ${authTokens.access}`
+            }),
             body: JSON.stringify({'refreshToken': authTokens.refresh})
           })
           const data = await response.json()

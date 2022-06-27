@@ -28,8 +28,6 @@ function Posts(){
     }
     const submitPost = async (e) =>{
         e.preventDefault()
-        console.log(user.user.id)
-        console.log(authTokens)
         const post = {
             userId : user.user.id,
             content : postContent,
@@ -45,7 +43,6 @@ function Posts(){
                 body: JSON.stringify(post)
             })
             const parsedResponse = await response.json()
-            console.log(parsedResponse)
         }catch(err){
             console.log(err)
             //TODO- ERROR HANDLING
