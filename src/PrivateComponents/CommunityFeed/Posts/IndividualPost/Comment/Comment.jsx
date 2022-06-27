@@ -29,7 +29,7 @@ function Comment(props) {
             body: JSON.stringify(commentToSend)
             })
             const parsedResponse = await response.json()
-            console.log(parsedResponse)
+            setComment('')
             setComments([...comments, parsedResponse])
         }catch(err){
             console.log(err)
@@ -45,7 +45,7 @@ function Comment(props) {
             <Form id="comment-form" className="rounded p-4 p-sm-3" onSubmit={submitComment}>
                 <Form.Group className="mb-3">
                     <Form.Label className="form-label">Add a comment</Form.Label>
-                    <Form.Control className="user-input" type="text" placeholder='Enter comment' name="comment" onChange={handleCommentInput}/>
+                    <Form.Control className="user-input" type="text" placeholder='Enter comment' value={comment} name="comment" onChange={handleCommentInput}/>
                     <Button variant="primary" type="submit">Submit</Button>
                 </Form.Group>
             </Form>
