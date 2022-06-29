@@ -7,7 +7,7 @@ import "./Profile.css";
 
 function Profile() {
   //NOTE CHANGE THIS TO THE USERS PROFILE AFTER DECIDING WHERE STATE LIVES AND PASSING PROPS
-
+  const { authTokens, user } = useContext(AuthContext);
   const [profile, setProfile] = useState("");
   const [username, setUsername] = useState("");
   const [pronouns, setPronouns] = useState("");
@@ -17,7 +17,6 @@ function Profile() {
   const [interests, setInterests] = useState("");
   const [showEditModal, setShowEditModal] = useState(false);
   const [image, setImage] = useState(null);
-  const { user, authTokens } = useContext(AuthContext);
   console.log(user);
   const toggleEditModal = () => {
     setShowEditModal(!showEditModal);
@@ -31,19 +30,21 @@ function Profile() {
     formData.append("countryOfOrigin", countryOfOrigin);
     formData.append("currentLocation", currentLocation);
     formData.append("about", aboutMe);
-    formData.append("interests", interests);
+    // formData.append("interests", interests);
     const response = await fetch(
       `http://localhost:3001/profile/${user.user.id}`,
       {
         method: "PUT",
         headers: new Headers({
-          "Content-Type": "application/json",
           Authorization: `Bearer ${authTokens.access}`,
         }),
         body: formData,
       }
     );
     const parsedResponse = await response.json();
+    console.log(parsedResponse);
+    user.user.Profile = parsedResponse;
+    console.log(user);
     setProfile(parsedResponse);
   };
   const handleImageUpload = (e) => {
@@ -148,7 +149,7 @@ function Profile() {
               }}
             />
           </Form.Group>
-          <Form.Group className="mb-3">
+          {/* <Form.Group className="mb-3">
             <Form.Label className="interests-form-label">Interests</Form.Label>
             <Form.Control
               className="big-user-input"
@@ -160,7 +161,7 @@ function Profile() {
                 setInterests(e.target.value);
               }}
             />
-          </Form.Group>
+          </Form.Group> */}
           <Button variant="secondary" onClick={toggleEditModal}>
             Close
           </Button>

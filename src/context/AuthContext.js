@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }) => {
       ? jwt_decode(localStorage.getItem("authTokens"))
       : null
   );
+
   const [incorrectCredentials, setIncorrectCredentials] = useState(false);
   //THIS LINE OF CODE WAS A NIGHTMARE!!!
   const [authTokens, setAuthTokens] = useState(() =>
@@ -34,6 +35,7 @@ export const AuthProvider = ({ children }) => {
         }),
       });
       const data = await response.json();
+      console.log(data);
       if (response.status === 200) {
         setAuthTokens({ access: data.token, refresh: data.refreshToken });
         setUser(data.user);
@@ -72,6 +74,7 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify({ refreshToken: authTokens.refresh }),
       });
       const data = await response.json();
+      console.log(data);
       if (response.status === 200) {
         setAuthTokens({ access: data.token, refresh: data.refreshToken });
         setUser(jwt_decode(data.token));
@@ -88,7 +91,7 @@ export const AuthProvider = ({ children }) => {
   //TO CALL REFRESH FUNCTION BEFORE 5MIN UP
   //NOTE-CHANGE BACK TO 4MIN INTERVAL
   useEffect(() => {
-    const fourMinutes = 1000 * 60 * 4;
+    const fourMinutes = 1000 * 60 * 1;
     let interval = setInterval(() => {
       if (authTokens) {
         updateToken();
