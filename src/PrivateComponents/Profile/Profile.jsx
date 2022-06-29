@@ -7,47 +7,49 @@ import "./Profile.css";
 
 function Profile() {
   //NOTE CHANGE THIS TO THE USERS PROFILE AFTER DECIDING WHERE STATE LIVES AND PASSING PROPS
-  const [profile, setProfile] = useState('')
-  const [username, setUsername] = useState('')
-  const [pronouns, setPronouns] = useState('')
-  const [countryOfOrigin, setCountryOfOrigin] = useState('')
-  const [currentLocation, setCurrentLocation] = useState(' ')
-  const [aboutMe, setAboutMe] = useState('')
-  const [interests, setInterests] = useState('')
-  const [showEditModal, setShowEditModal] = useState(false)
-  const [image, setImage] = useState(null)
-  const { user, authTokens } = useContext(AuthContext)
-  const toggleEditModal = () =>{
-    setShowEditModal(!showEditModal)
-  }
-  const handleFormSubmission = async (e)=>{
-    e.preventDefault()
-    const formData = new FormData()
-    formData.append("avatar", image)
-    formData.append("nickname", username)
-    formData.append("pronouns", pronouns)
-    //NOTE CHANGE BELOW WHEN ADDITIONAL COUNTRY FIELD IS KNOWN
-    // formData.append("countryOfOrigin", countryOfOrigin)
-    formData.append("country", currentLocation)
-    formData.append("about", aboutMe)
-    formData.append("interests", interests)
-    formData.append("userId", user.user.id)
-    console.log(user.user.id)
-    const response = await fetch(`http://localhost:3001/profile/${user.user.id}`,{
-      method: "PUT",
-      headers: new Headers({
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${authTokens.access}`
-      }),
-      body: formData
-    })
-    const parsedResponse = await response.json()
-    setProfile(parsedResponse)
-  }
-  const handleImageUpload = (e) =>{
-    let file = e.target.files[0]
-    setImage(file)
-  }
+
+  const [profile, setProfile] = useState("");
+  const [username, setUsername] = useState("");
+  const [pronouns, setPronouns] = useState("");
+  const [countryOfOrigin, setCountryOfOrigin] = useState("");
+  const [currentLocation, setCurrentLocation] = useState(" ");
+  const [aboutMe, setAboutMe] = useState("");
+  const [interests, setInterests] = useState("");
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [image, setImage] = useState(null);
+  const { user, authTokens } = useContext(AuthContext);
+  console.log(user);
+  const toggleEditModal = () => {
+    setShowEditModal(!showEditModal);
+  };
+  const handleFormSubmission = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("avatar", image);
+    formData.append("nickname", username);
+    formData.append("pronouns", pronouns);
+    formData.append("countryOfOrigin", countryOfOrigin);
+    formData.append("currentLocation", currentLocation);
+    formData.append("about", aboutMe);
+    formData.append("interests", interests);
+    const response = await fetch(
+      `http://localhost:3001/profile/${user.user.id}`,
+      {
+        method: "PUT",
+        headers: new Headers({
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authTokens.access}`,
+        }),
+        body: formData,
+      }
+    );
+    const parsedResponse = await response.json();
+    setProfile(parsedResponse);
+  };
+  const handleImageUpload = (e) => {
+    let file = e.target.files[0];
+    setImage(file);
+  };
   return (
     <div className="Profile">
       <Nav />
