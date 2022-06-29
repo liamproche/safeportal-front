@@ -8,12 +8,13 @@ function Posts() {
   const [postContent, setPostContent] = useState("");
   const [posts, setPosts] = useState([]);
   const [image, setImage] = useState("");
-  const { user, authTokens } = useContext(AuthContext);
+  const { authTokens, user } = useContext(AuthContext);
+
   const getPosts = async () => {
     try {
       const response = await fetch("http://localhost:3001/post", {
         headers: new Headers({
-          "Content-Type": "application.json",
+          "Content-Type": "application/json",
           Authorization: `Bearer ${authTokens.access}`,
         }),
       });
@@ -26,6 +27,7 @@ function Posts() {
     }
   };
   const submitPost = async (e) => {
+    e.preventDefault();
     let postData = new FormData();
     postData.append("userId", user.id);
     postData.append("content", postContent);
@@ -34,13 +36,14 @@ function Posts() {
     try {
       const response = await fetch("http://localhost:3001/post", {
         method: "POST",
-        headers: new Headers({
-          "Content-Type": "application/json",
+        headers: {
           Authorization: `Bearer ${authTokens.access}`,
-        }),
+        },
         body: postData,
       });
       const parsedResponse = await response.json();
+      console.log(parsedResponse);
+      setPosts([...posts, parsedResponse]);
     } catch (err) {
       console.log(err);
       //TODO- ERROR HANDLING
