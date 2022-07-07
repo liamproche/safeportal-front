@@ -9,6 +9,17 @@ function ReportForm() {
     const [incidentDate, setIncidentDate] = useState('')
     const [incidentLocation, setIncidentLocation] = useState('')
     const [reportBody, setReportBody] = useState('')
+    const submitReport = ()=>{
+        const report = {
+            name: name,
+            pronouns: pronouns,
+            anoymous: anonymous,
+            incidentDate: incidentDate,
+            incidentLocation: incidentLocation,
+            reportBody: reportBody
+        }
+    }
+    
     return (
     <div className="ReportForm">
         <h1>This is the Report Form component</h1>
