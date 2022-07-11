@@ -14,4 +14,6 @@
         <li>JSON Web Tokens</li>
     </ul>
 
-<a href="https://github.com/e-papanicolas/safe-space-api">Link to backend application</a>
+<h2>Link to backend application built by <a href="https://github.com/e-papanicolas">Eleni Papanicolas</h2>
+
+<a href="https://github.com/e-papanicolas/safe-space-api">https://github.com/e-papanicolas/safe-space-api</a>
