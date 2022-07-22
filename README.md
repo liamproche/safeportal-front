@@ -1,6 +1,6 @@
 <h1>Safe Portal</h1>
 <h2>App Description</h2>
-<p>This front-end was developed as part of a full PERN stack social media application to assist in connecting LGBTQIA+ refugees across SafePlace International's various shelters</p>
+<p>This front-end was developed as part of a full PERN stack social media application to assist in connecting LGBTQIA+ refugees across  various shelters</p>
 
 <h2>Technologies Used</h2>
     <ul>
